@@ -1,16 +1,16 @@
 <script setup>
 import SingleItem from './SingleItem.vue'
 
-const { title, link } = defineProps({
+defineProps({
   title: {
     type: String,
     required: true,
   },
-  link: {
+  path: {
     type: String,
     required: true,
   },
-  itens: {
+  itensArray: {
     type: Array,
     required: true,
   },
@@ -24,19 +24,13 @@ const { title, link } = defineProps({
         {{ title }}
       </h1>
 
-      <a :href="link" class="hover:underline text-neutral-400 text-sm font-bold cursor-pointer">
+      <a :href="path" class="hover:underline text-neutral-400 text-sm font-bold cursor-pointer">
         Mostrar tudo
       </a>
     </header>
 
-    <ul class="flex relative z-10">
-      <SingleItem
-        v-for="(item, index) in itens"
-        :key="index"
-        :cover="item.cover"
-        :title="item.title"
-        :subtitle="item.subtitle"
-      />
+    <ul class="flex flex-wrap relative z-10">
+      <SingleItem v-for="(item, index) in itensArray" :key="index" v-bind="item" />
     </ul>
   </div>
 </template>

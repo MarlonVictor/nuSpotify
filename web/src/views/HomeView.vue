@@ -1,41 +1,10 @@
 <script setup>
 import HeaderComponent from '@/components/HeaderComponent.vue'
 import ItemList from '@/components/ItemList.vue'
+import MusicDetail from '@/components/MusicDetail.vue'
 
-const data = [
-  {
-    title: 'Artistas populares',
-    link: '#',
-    itens: [
-      {
-        cover: 'https://i.scdn.co/image/ab6761610000517429af2ffb6f4ddd6324f878bc',
-        title: 'Korn',
-        subtitle: 'Artista',
-      },
-    ],
-  },
-  {
-    title: 'Músicas populares',
-    link: '#',
-    itens: [
-      {
-        cover: 'https://upload.wikimedia.org/wikipedia/pt/3/3a/Follow_the_Leader_-_Korn.png',
-        title: 'Freak On a Leash',
-        subtitle: 'Follow The Leader',
-      },
-      {
-        cover: 'https://upload.wikimedia.org/wikipedia/pt/3/3a/Follow_the_Leader_-_Korn.png',
-        title: 'Got the Life',
-        subtitle: 'Follow The Leader',
-      },
-      {
-        cover: 'https://upload.wikimedia.org/wikipedia/pt/f/f4/KornIssuesArt.jpeg',
-        title: 'Falling Away from Me',
-        subtitle: 'Issues',
-      },
-    ],
-  },
-]
+import { artistArray } from '../assets/database/artists'
+import { songsArray } from '../assets/database/songs'
 </script>
 
 <template>
@@ -51,14 +20,12 @@ const data = [
           class="bg-[linear-gradient(0deg,rgba(31,31,31,1)10%,rgba(31,31,31,0.85)68%,rgba(31,31,31,0.6)100%)] h-80 block absolute top-0 left-0 right-0"
         ></span>
 
-        <ItemList
-          v-for="(item, index) in data"
-          :key="index"
-          :title="item.title"
-          :link="item.link"
-          :itens="item.itens"
-        />
+        <ItemList title="Artistas populares" path="/" :itensArray="artistArray.slice(0, 4)" />
+
+        <ItemList title="Músicas populares" path="/" :itensArray="songsArray.slice(0, 4)" />
       </section>
+
+      <MusicDetail />
     </div>
   </main>
 </template>
