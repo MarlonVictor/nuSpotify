@@ -15,7 +15,6 @@ defineProps({
   },
   artist: {
     type: String,
-    default: 'Artista',
   },
   banner: {
     type: String,
@@ -30,7 +29,11 @@ defineProps({
       class="flex flex-col gap-2 p-3 rounded-lg cursor-pointer hover:bg-white/5 transition-colors group"
     >
       <div class="relative">
-        <img :src="image" class="rounded-lg size-40 object-cover" />
+        <img
+          :src="image"
+          class="rounded-full size-40 object-cover"
+          :class="{ 'rounded-lg': artist }"
+        />
 
         <button
           data-testid="play-button"
@@ -41,13 +44,16 @@ defineProps({
         </button>
       </div>
 
-      <div class="flex flex-col gap-1 items-start">
-        <p class="text-white font-semibold line-clamp-2 w-40 hover:underline">
+      <div class="flex flex-col gap-0.5 items-start">
+        <p class="text-white text-sm font-medium line-clamp-2 w-40 hover:underline">
           {{ name }}
         </p>
 
-        <span class="text-neutral-400 font-medium line-clamp-2 text-sm w-40 hover:underline">
-          {{ artist }}
+        <span
+          class="text-neutral-400 font-medium line-clamp-2 text-sm w-40"
+          :class="{ 'hover:underline': artist }"
+        >
+          {{ artist || 'Artista' }}
         </span>
       </div>
     </a>

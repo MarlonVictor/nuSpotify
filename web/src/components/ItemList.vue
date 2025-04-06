@@ -1,4 +1,5 @@
 <script setup>
+import { RouterLink } from 'vue-router'
 import SingleItem from './SingleItem.vue'
 
 defineProps({
@@ -8,7 +9,7 @@ defineProps({
   },
   path: {
     type: String,
-    required: true,
+    default: '',
   },
   itensArray: {
     type: Array,
@@ -18,15 +19,27 @@ defineProps({
 </script>
 
 <template>
-  <div>
-    <header class="relative flex items-end justify-between z-10 pb-1 px-3 h-12">
-      <h1 class="hover:underline text-white text-2xl font-bold cursor-pointer">
-        {{ title }}
-      </h1>
+  <div class="overflow-auto">
+    <header
+      class="relative flex items-end justify-between z-10 p-3 pb-6"
+      :class="{ '!pb-1 !pt-0 h-12': path }"
+    >
+      <RouterLink :to="path">
+        <h1
+          class="text-white text-2xl font-bold"
+          :class="{ 'cursor-pointer hover:underline': path }"
+        >
+          {{ title }}
+        </h1>
+      </RouterLink>
 
-      <a :href="path" class="hover:underline text-neutral-400 text-sm font-bold cursor-pointer">
+      <RouterLink
+        v-if="path"
+        :to="path"
+        class="hover:underline text-neutral-400 text-sm font-bold cursor-pointer"
+      >
         Mostrar tudo
-      </a>
+      </RouterLink>
     </header>
 
     <ul class="flex flex-wrap relative z-10">
