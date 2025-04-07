@@ -48,7 +48,7 @@ import IconHide from './Icons/IconHide.vue'
           <button
             class="h-8 px-4 flex items-center border border-neutral-600 rounded-full text-white/80 text-sm font-bold hover:border-white/80 hover:scale-105 transition-all cursor-pointer text-nowrap"
           >
-            Ver mais
+            Saiba mais
           </button>
         </div>
 

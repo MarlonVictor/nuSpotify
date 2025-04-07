@@ -5,7 +5,7 @@ import MusicDetail from './components/MusicDetail.vue'
 </script>
 
 <template>
-  <main class="flex flex-col min-h-screen bg-black">
+  <main class="flex flex-col h-screen max-h-screen bg-black">
     <HeaderComponent />
 
     <div class="flex flex-1 px-2">
