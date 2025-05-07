@@ -31,7 +31,7 @@ defineProps({
       <div class="relative">
         <img
           :src="image"
-          class="rounded-full size-40 object-cover"
+          class="rounded-full size-40 shrink-0 object-cover"
           :class="{ 'rounded-lg': artist }"
         />
 
